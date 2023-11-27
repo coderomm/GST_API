@@ -1,0 +1,67 @@
+﻿@model GST_TaxPayerSearch_API.Models.ApiResponse
+ 
+    <section class="py-5" style="min-height:80vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-4">
+                    <form action="~/Home/Index" method="post">
+                        <div class="mb-3">
+                            <label for="gstNum" class="form-label">Enter your GST Number</label>
+                            <input type="text" class="form-control" id="gstNum" name="gstNum" required>
+                        </div>
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </form>
+                </div>
+                <div class="col-12 col-sm-7">
+                    <div class="response mt-4 mt-sm-0 border-1">
+                        <h3>Your Req Response:</h3>
+                        @if (Model != null && Model.Data != null)
+                        {
+                            <p>GSTIN: @Model.Data.Gstin</p>
+                            <p>Legal Name: @Model.Data.Lgnm</p>
+                            <p>State Jurisdiction Code: @Model.Data.StjCd</p>
+                            <p>Registration Date: @Model.Data.Rgdt</p>
+                            <p>Business Type: @Model.Data.Ctb</p>
+                            <p>Trade Name: @Model.Data.TradeNam</p>
+                            <p>Status: @Model.Data.Sts</p>
+                            <p>E-invoice Status: @Model.Data.EinvoiceStatus</p>
+
+                            <h4>Principal Address:</h4>
+                            if (Model.Data.Pradr != null && Model.Data.Pradr.Addr != null)
+                            {
+                                <p>Building Name: @Model.Data.Pradr.Addr.Bnm</p>
+                                <p>Street: @Model.Data.Pradr.Addr.St</p>
+                                <p>Location: @Model.Data.Pradr.Addr.Loc</p>
+                                <p>City: @Model.Data.Pradr.Addr.Dst</p>
+                                <p>State Code: @Model.Data.Pradr.Addr.Stcd</p>
+                                <p>Postal Code: @Model.Data.Pradr.Addr.Pncd</p>
+                            }
+                            else
+                            {
+                                <p>No principal address available.</p>
+                            }
+
+                            <h4>Additional Details:</h4>
+                            if (Model.Data.Nba != null && Model.Data.Nba.Any())
+                            {
+                                <ul>
+                                    @foreach (var additionalDetail in Model.Data.Nba)
+                                    {
+                                        <li>@additionalDetail</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p>No additional details available.</p>
+                            }
+                        }
+                        else
+                        {
+                            <p>No data available.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

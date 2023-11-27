@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST TaxPayer Search | Data Bolta Hai</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark  py-3">
+        <div class="container">
+            <a class="navbar-brand" href="~/">GST_API</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="~/">Home</a>
+                    <a class="nav-link" aria-current="page" href="~/">Search TaxPayer</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer class="bg-dark py-2">
+        <p class="m-0 text-light text-center">&copy; @DateTime.Now.Year - GST Tax Payer Search App</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
